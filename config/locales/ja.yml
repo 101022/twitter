@@ -1,4 +1,8 @@
 ja:
+  view:
+    edit:            編集
+    delete:          削除
+    back:            戻る
   link:
     user_list:       ユーザ一覧
     profile:         プロフィール
@@ -10,3 +14,9 @@ ja:
     mail:            メールアドレス
     password:        パスワード
     confirmation:    確認
+  tweet:
+    tweet_list:      ツイート一覧
+    tweet:           ツイート
+    new_tweet:       新規ツイート
+
+

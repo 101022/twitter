@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     before_save { mail.downcase! }
+    has_many :tweets
 
     has_secure_password
   

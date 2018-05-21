@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ .success {
+    padding-left: 10px;
+    color: green;
+    background-color: RGB(200, 255, 200);
+}
+
+.error {
+    padding-left: 10px;
+    color: red;
+    background-color: RGB(255, 200, 200);
+}

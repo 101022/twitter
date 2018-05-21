@@ -21,17 +21,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      redirect_to @user
+      redirect_to @user, flash: {error: 'アカウントを作成しました'}
     else
-      render 'new', flash: {error: 'アカウント作成できませんでした。'}
+      render 'new', flash: {error: 'アカウント作成できませんでした'}
     end
   end
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to @user
+      redirect_to @user, flash: {success: 'プロフィールを更新しました'}
     else
-      render 'edit', flash: {error: 'プロフィールを更新できませんでした。'}
+      render 'edit', flash: {error: 'プロフィールを更新できませんでした'}
     end
   end
 

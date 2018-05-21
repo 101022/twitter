@@ -1,0 +1,15 @@
+<h1>新規ツイート</h1>
+
+<%= form_with(model: @tweet, url: user_tweets_path) do |t| %>
+
+  <table border="1">
+    <tr>
+      <th><%= t.label :tweet, t('tweet.tweet') %></th>
+      <td><%= t.text_field :tweet %></td>
+    </tr>
+  </table>
+
+  <%= t.submit 'tweet' %><br><br>
+  <%= link_to t('view.back'), user_tweets_path(@user) %>
+
+<% end %>

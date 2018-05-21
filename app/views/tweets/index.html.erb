@@ -1,0 +1,35 @@
+<% if current_user?(@user) %>
+  <h1>タイムライン</h1>
+<% else %>
+  <h1>ツイート一覧</h1>
+<% end %>
+
+<% if current_user?(@user) %>
+  <p><%= link_to t('tweet.new_tweet'), new_user_tweet_path, method: :get %></p>
+<% end %>
+
+<table>
+  <tr>
+    <th style="width:100px;"><%= t('user.name') %></th>
+    <th style="width:350px;"><%= t('tweet.tweet') %></th>
+    <th></th>
+  </tr>
+  <% @user.tweets.each do |tweet| %>
+    <tr>
+      <td style="text-align:center">
+        <%= tweet.user.name %>
+      </td>
+      <td>
+        <%= tweet.tweet %>
+      </td>
+      <td>
+        <% if current_user?(@user) %>
+          <%= link_to t('view.edit'), edit_tweet_path(tweet) %>
+          <%= link_to t('view.delete'), tweet_path(tweet),
+                              method: :delete,
+                              data: { confirm: "本当に削除しますか？" } %><br>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

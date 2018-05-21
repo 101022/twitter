@@ -4,15 +4,16 @@
 
   <table border="1">
     <tr>
-      <th><%= f.label :mail, 'メールアドレス' %></th>
+      <th><%= f.label :mail, t('user.mail') %></th>
       <td><%= f.text_field :mail %></td>
     </tr>
     <tr>
-      <th><%= f.label :password, 'パスワード' %></th>
+      <th><%= f.label :password, t('user.password') %></th>
       <td><%= f.password_field :password %></td>
     </tr>
   </table>
 
-  <%= f.submit 'ログインする' %>
+  <%= f.submit 'ログイン' %><br><br>
+  <%= link_to t('view.back') , users_path %>
 
 <% end %>

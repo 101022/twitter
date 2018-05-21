@@ -11,6 +11,8 @@
   </tr>
 </table>
 
+<p><%= link_to "ツイート一覧", user_tweets_path(@user) %></p>
+
 <% if current_user?(@user) %>
 <p><%= link_to '編集', edit_user_path %></p>
 <% end %>
