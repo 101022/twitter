@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Twitter</title>
+    <title>Login</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <p class="success"><%= flash[:success] %></p>
+    <p class="error"><%= flash[:error] %></p>
+
+    <ul>
+      <li><%= link_to t('link.user_list'), users_path %></li>
+      
+      <% if signed_in? %>
+        <li><%= link_to t('link.profile'), current_user %></li>
+        <li><%= link_to t('link.logout'), signout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to t('link.login'), signin_path %></li>
+        <li><%= link_to t('link.create_account'), signup_path %></li>
+      <% end %>
+
+    </ul>
+    <hr>
     <%= yield %>
   </body>
 </html>
