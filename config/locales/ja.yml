@@ -43,3 +43,5 @@ ja:
     reply:            返信
     comment_edit:     コメント編集
     comment_new:      コメント
+  session:
+    session_new:      ログイン

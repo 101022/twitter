@@ -7,10 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <p class="success"><%= flash[:success] %></p>
-    <p class="error"><%= flash[:error] %></p>
-    
     <div class="container">
+      <p class="success"><%= flash[:success] %></p>
+      <p class="error"><%= flash[:error] %></p>
+      
       <% if signed_in? %>
         <span><%= current_user.name %>でログイン中</span>
       <% end %>

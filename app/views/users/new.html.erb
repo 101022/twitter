@@ -2,7 +2,7 @@
 
 <%= form_with(model: @user) do |f| %>
 
-  <table border="1">
+  <table class="table table-bordered">
     <tr>
       <th><%= f.label :name, t('user.name') %></th>
       <td><%= f.text_field :name %></td>

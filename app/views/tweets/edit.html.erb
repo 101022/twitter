@@ -1,4 +1,4 @@
-<h1>ツイート更新</h1>
+<h1><%= t('tweet.tweet_edit') %></h1>
 
 <%= form_with(model: @tweet, url: tweet_path, method: :patch) do |t| %>
 
@@ -14,8 +14,7 @@
         <% if @tweet.picture.present? %>
           <label>
             <%= t.check_box :remove_picture %>
-            
-        <%= t('tweet.delete_picture') %>
+            <%= t('tweet.delete_picture') %>
           </label>
         <% end %>
     </td>

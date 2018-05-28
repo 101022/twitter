@@ -17,7 +17,7 @@
     <th class="width-120 text-align-center"></th>
   </tr>
   <% @tweet.each do |tweet| %>
-    <tr style="height:50px">
+    <tr class="tweet-row">
       <td class="text-align-center">
         <%= tweet.user.name %>
       </td>
@@ -40,7 +40,7 @@
           <%= link_to t('view.edit'), edit_tweet_path(tweet) %>
           <%= link_to t('view.delete'), tweet_path(tweet),
                               method: :delete,
-                              data: { confirm: "本当に削除しますか？" } %><br>
+                              data: { confirm: "本当に削除しますか？" } %>
         <% end %>
       </td>
     </tr>
@@ -59,8 +59,8 @@
             <%= comment.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
           </td>
           <td>
-            <% if current_user?(comment.tweet.user) %>
-              <div style="padding-left:37px">
+            <% if current_user?(comment.user) %>
+              <div class="padding-left-37">
                 <%= link_to t('view.edit'), edit_comment_path(comment) %>
                 <%= link_to t('view.delete'), comment_path(comment),
                                     method: :delete,

@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     if comment.update(comment_params)
         redirect_to user_tweets_path(current_user), flash: {success: 'コメントを更新しました'}
     else
-        render user_tweets_path(current_user), flash: {error: 'コメントの更新に失敗しました'}
+      redirect_to user_tweets_path(current_user), flash: {error: 'コメントの更新に失敗しました'}
     end
   end
 
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     if comment.destroy
       redirect_to user_tweets_path(current_user), flash: {success: '削除しました'}
     else
-        render user_tweets_path(current_user), flash: {error: 'ツイートを削除できませんでした'}
+      redirect_to user_tweets_path(current_user), flash: {error: 'ツイートを削除できませんでした'}
     end
   end
 
