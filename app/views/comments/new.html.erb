@@ -1,4 +1,4 @@
-<h1>返信</h1>
+<h1><%= t('comment.comment_new') %></h1>
 
 
 <div
@@ -7,14 +7,11 @@
 </div>
 <br>
 <%= form_with(model: @comment, url: tweet_comments_path) do |c| %>
-  <table border="1">
-    <tr>
-      <th><%= c.label :comment, t('comment.comment') %></th>
-      <td><%= c.text_field :comment %></td>
-    </tr>
-  </table>
-
-  <%= c.submit t('comment.reply') %><br><br>
+  <div class="form-group">
+    <%= c.label :comment, t('comment.comment') %>
+    <%= c.text_field :comment, class: "form-controll" %>
+  </div>
+  <%= c.submit t('comment.reply'), class: "btn btn-primary" %><br><br>
   <%= link_to t('view.back'), user_tweets_path(current_user) %>
 
 <% end %>

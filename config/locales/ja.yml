@@ -18,15 +18,28 @@ ja:
     confirmation:     確認
     follow:           フォロー
     unfollow:         アンフォロー
+    following:        フォロー
+    follower:         フォロワー
+    user_edit:        アカウント編集
+    user_index:       ユーザ一覧
+    user_new:         アカウント作成
+    user_show:        ユーザ情報
   tweet:
     tweet_list:       ツイート一覧
     tweet:            ツイート
+    photo:            写真
     new_tweet:        新規ツイート
     updatetime:       更新日時
     picture:          写真
     appended_picture: 添付写真
     delete_picture:   画像を削除
+    tweet_edit:       ツイート更新
+    tweet_index:
+      list:           ツイート一覧
+      timeline:       タイムライン
+    tweet_new:        新規ツイート
   comment:
     comment:          コメント
     reply:            返信
-
+    comment_edit:     コメント編集
+    comment_new:      コメント

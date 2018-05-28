@@ -1,11 +1,11 @@
-<h1>ユーザ一覧</h1>
+<h1><%= t('user.user_index') %></h1>
 
-<table>
-  <tr>
-    <th class="width-100"></th>
-    <th class="width-120"></th>
-    <th class="width-120"></th>
-    <th class="width-120"></th>
+<table class="table table-striped table-condensed table-bordered">
+  <tr class="info">
+    <th class="width-100"><%= t('user.name') %></th>
+    <th class="width-120"><%= t('user.following') %></th>
+    <th class="width-120"><%= t('user.follower') %></th>
+    <th class="width-120"><%= t('tweet.tweet') %></th>
   </tr>
   <% @users.each do |user| %>
     <tr>
@@ -16,19 +16,19 @@
         <strong>
           <%= user.followings.count %>
         </strong>
-        following
+        <%= t('user.following') %>
       </td>
       <td>
         <strong>
           <%= user.followers.count %>
         </strong>
-        followers
+        <%= t('user.follower') %>
       </td>
       <td>
         <strong>
           <%= user.tweets.count %>
         </strong>
-        tweets
+        <%= t('tweet.tweet') %>
       </td>
     </tr>
   <% end %>

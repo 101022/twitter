@@ -1,4 +1,4 @@
-<h1>編集</h1>
+<h1><%= t('comment.comment_edit') %></h1>
 
 
 <div
@@ -7,14 +7,12 @@
 </div>
 <br>
 <%= form_with(model: @comment, url: comment_path, method: :patch) do |c| %>
-  <table border="1">
-    <tr>
-      <th><%= c.label :comment, t('comment.comment') %></th>
-      <td><%= c.text_field :comment %></td>
-    </tr>
-  </table>
+    <div class="form-group">
+      <%= c.label :comment, t('comment.comment') %>
+      <%= c.text_field :comment, class: "form-controll" %>
+    </div>
 
-  <%= c.submit t('view.update') %><br><br>
+  <%= c.submit t('view.update'), class: "btn btn-primary" %><br><br>
   <%= link_to t('view.back'), user_tweets_path(current_user) %>
 
 <% end %>

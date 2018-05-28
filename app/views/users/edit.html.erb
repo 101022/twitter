@@ -1,8 +1,8 @@
-<h1>アカウント編集</h1>
+<h1><%= t('user.user_edit') %></h1>
 
 <%= form_with(model: @user) do |f| %>
 
-  <table border="1">
+  <table class="table table-striped table-bordered">
     <tr>
       <th><%= f.label :name, t('user.name') %></th>
       <td><%= f.text_field :name %></td>
@@ -21,7 +21,7 @@
     </tr>
   </table>
 
-  <%= f.submit 'アカウントを編集する' %><br><br>
+  <%= f.submit 'アカウントを編集する',  class: "btn btn-primary"  %><br><br>
   <%= link_to t('view.back') , user_path %>
 
 <% end %>

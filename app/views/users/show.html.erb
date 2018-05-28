@@ -1,17 +1,17 @@
-<h1>ユーザ情報</h1>
+<h1><%= t('user.user_show') %></h1>
 
-<table border="1">
+<table class="table">
   <tr>
-    <th><%= t 'user.name' %></th>
+    <th><%= t('user.name') %></th>
     <td><%= @user.name %></td>
   </tr>
   <tr>
-    <th><%= t 'user.mail' %></th>
+    <th><%= t('user.mail') %></th>
     <td><%= @user.mail %></td>
   </tr>
 </table>
 <% if current_user?(@user) %>
-  <p><%= link_to t('view.edit'), edit_user_path %></p>
+  <p><%= link_to  t('view.edit'), edit_user_path %></p>
 <% end %>
 
 <%= render 'follow_form' if signed_in? %>

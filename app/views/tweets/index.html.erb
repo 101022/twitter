@@ -1,30 +1,30 @@
 <% if current_user?(@user) %>
-  <h1>タイムライン</h1>
+  <h1><%= t('tweet.tweet_index.timeline') %></h1>
 <% else %>
-  <h1>ツイート一覧</h1>
+  <h1><%= t('tweet.tweet_index.list') %></h1>
 <% end %>
 
 <% if current_user?(@user) %>
-  <p><%= link_to t('tweet.new_tweet'), new_user_tweet_path, method: :get %></p>
+  <p><%= link_to t('tweet.new_tweet'), new_user_tweet_path, method: :get, class: "btn btn-primary"  %></p>
 <% end %>
 
-<table style="border:blaclk 1px">
-  <tr>
-    <th class="width-100"><%= t('user.name') %></th>
-    <th class="width-350"><%= t('tweet.tweet') %></th>
-    <th class="width-220"><%= "写真" %></th>
-    <th class="width-220"><%= t('tweet.updatetime') %></th>
-    <th></th>
+<table class="table table-striped table-bordered">
+  <tr class="info">
+    <th class="width-100 text-align-center"><%= t('user.name') %></th>
+    <th class="width-350 text-align-center"><%= t('tweet.tweet') %></th>
+    <th class="width-220 text-align-center"><%= t('tweet.photo')  %></th>
+    <th class="width-220 text-align-center"><%= t('tweet.updatetime') %></th>
+    <th class="width-120 text-align-center"></th>
   </tr>
   <% @tweet.each do |tweet| %>
     <tr style="height:50px">
-      <td style="text-align:center">
+      <td class="text-align-center">
         <%= tweet.user.name %>
       </td>
       <td>
         <%= tweet.tweet %>
       </td>
-      <td style="text-align:center">
+      <td class="text-align-center">
         <% if tweet.picture.present? %>
           <%= image_tag tweet.picture.thumb.url %>
         <% else %>
