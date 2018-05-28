@@ -3,10 +3,11 @@ class TweetsController < ApplicationController
     def index
         @user = user
         if current_user?(@user)
-            # TODO カレントユーザだけでなく、フォローしているユーザのツイートも取得すること
-            @tweet = Tweet.where()
+            followings = @user.followings.pluck(:id)
+            followings.push(@user.id)
+            @tweet = Tweet.where(user_id: followings).order("updated_at DESC")
         else
-            @tweet = @user.tweets.all
+            @tweet = @user.tweets.all.order("updated_at DESC")
         end
     end
 
@@ -49,7 +50,7 @@ class TweetsController < ApplicationController
 
     private
         def tweet_params
-            params.require(:tweet).permit(:user, :tweet)
+            params.require(:tweet).permit(:user, :tweet, :picture, :remove_picture)
         end
 
         def user

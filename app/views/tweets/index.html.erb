@@ -8,22 +8,35 @@
   <p><%= link_to t('tweet.new_tweet'), new_user_tweet_path, method: :get %></p>
 <% end %>
 
-<table>
+<table style="border:blaclk 1px">
   <tr>
-    <th style="width:100px;"><%= t('user.name') %></th>
-    <th style="width:350px;"><%= t('tweet.tweet') %></th>
+    <th class="width-100"><%= t('user.name') %></th>
+    <th class="width-350"><%= t('tweet.tweet') %></th>
+    <th class="width-220"><%= "写真" %></th>
+    <th class="width-220"><%= t('tweet.updatetime') %></th>
     <th></th>
   </tr>
-  <% @user.tweets.each do |tweet| %>
-    <tr>
+  <% @tweet.each do |tweet| %>
+    <tr style="height:50px">
       <td style="text-align:center">
         <%= tweet.user.name %>
       </td>
       <td>
         <%= tweet.tweet %>
       </td>
+      <td style="text-align:center">
+        <% if tweet.picture.present? %>
+          <%= image_tag tweet.picture.thumb.url %>
+        <% else %>
+          -
+        <% end %>
+      </td>
       <td>
-        <% if current_user?(@user) %>
+        <%= tweet.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+      </td>
+      <td>
+        <%= link_to "返信", new_tweet_comment_path(tweet) %>
+        <% if current_user?(tweet.user) %>
           <%= link_to t('view.edit'), edit_tweet_path(tweet) %>
           <%= link_to t('view.delete'), tweet_path(tweet),
                               method: :delete,
@@ -31,5 +44,33 @@
         <% end %>
       </td>
     </tr>
+    <% if tweet.comments.count > 0 && current_user?(@user) %>
+      <% tweet.comments.each do |comment|%>
+        <tr class="comment-row">
+          <td class="text-align-center">
+            <%= comment.user.name %>
+          </td>
+          <td colspan="2">
+            <div>
+              ＞＞<%= comment.comment %>
+            </div>
+          </td>
+          <td>
+            <%= comment.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+          </td>
+          <td>
+            <% if current_user?(comment.tweet.user) %>
+              <div style="padding-left:37px">
+                <%= link_to t('view.edit'), edit_comment_path(comment) %>
+                <%= link_to t('view.delete'), comment_path(comment),
+                                    method: :delete,
+                                  data: { confirm: "本当に削除しますか？" } %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
   <% end %>
 </table>
+ 

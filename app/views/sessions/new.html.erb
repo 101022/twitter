@@ -1,6 +1,6 @@
 <h1>ログイン</h1>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
+<%= form_with(model: @session, url: sessions_path, scope: :session) do |f| %>
 
   <table border="1">
     <tr>
@@ -13,7 +13,7 @@
     </tr>
   </table>
 
-  <%= f.submit 'ログイン' %><br><br>
+  <%= f.submit t('link.login') %><br><br>
   <%= link_to t('view.back') , users_path %>
 
 <% end %>

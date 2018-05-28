@@ -62,3 +62,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'slim-rails'

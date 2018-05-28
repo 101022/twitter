@@ -10,19 +10,24 @@
     <p class="success"><%= flash[:success] %></p>
     <p class="error"><%= flash[:error] %></p>
     
-    <ul>
-      <li><%= link_to t('link.user_list'), users_path %></li>
+    <div>
+      <% if signed_in? %>
+        <span><%= current_user.name %>でログイン中</span>
+      <% end %>
+    
+      <span class="margin-left-40"><%= link_to t('link.user_list'), users_path %></span>
       
       <% if signed_in? %>
-        <li><%= link_to t('link.profile'), current_user %></li>
-        <li><%= link_to t('link.logout'), signout_path, method: :delete,
-                data: { confirm: "ログアウトしてもよろしいですか？" } %></li>
+        <span class="margin-left-40"><%= link_to t('link.profile'), current_user %></span>
+        <span class="margin-left-40"><%= link_to t('link.timeline'), user_tweets_path(current_user) %></span>
+        <span class="margin-left-40"><%= link_to t('link.logout'), signout_path, method: :delete,
+                data: { confirm: "ログアウトしてもよろしいですか？" } %></span>
       <% else %>
-        <li><%= link_to t('link.login'), signin_path %></li>
-        <li><%= link_to t('link.create_account'), signup_path %></li>
+        <span class="margin-left-40"><%= link_to t('link.login'), signin_path %></span>
+        <span class="margin-left-40"><%= link_to t('link.create_account'), signup_path %></span>
       <% end %>
 
-    </ul>
+    </div>
     <hr>
     <%= yield %>
   </body>

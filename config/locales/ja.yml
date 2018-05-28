@@ -1,22 +1,32 @@
 ja:
   view:
-    edit:            編集
-    delete:          削除
-    back:            戻る
+    update:           更新
+    edit:             編集
+    delete:           削除
+    back:             戻る
   link:
-    user_list:       ユーザ一覧
-    profile:         プロフィール
-    logout:          ログアウト
-    login:           ログイン
-    create_account:  アカウント作成
+    user_list:        ユーザ一覧
+    profile:          プロフィール
+    timeline:         タイムライン
+    logout:           ログアウト
+    login:            ログイン
+    create_account:   アカウント作成
   user:
-    name:            名前
-    mail:            メールアドレス
-    password:        パスワード
-    confirmation:    確認
+    name:             名前
+    mail:             メールアドレス
+    password:         パスワード
+    confirmation:     確認
+    follow:           フォロー
+    unfollow:         アンフォロー
   tweet:
-    tweet_list:      ツイート一覧
-    tweet:           ツイート
-    new_tweet:       新規ツイート
-
+    tweet_list:       ツイート一覧
+    tweet:            ツイート
+    new_tweet:        新規ツイート
+    updatetime:       更新日時
+    picture:          写真
+    appended_picture: 添付写真
+    delete_picture:   画像を削除
+  comment:
+    comment:          コメント
+    reply:            返信
 

@@ -1,3 +1,17 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-follow{
+    color: RGB(120, 190, 255);
+    background-color: RGB(255,255,255);
+}
+.btn-unfollow{
+    color: RGB(255, 255, 255);
+    background-color: RGB(120,190,255);
+}
+.width-100{
+    width:100px
+}
+.width-120{
+    width:120px
+}

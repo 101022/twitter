@@ -7,9 +7,32 @@
       <th><%= t.label :tweet, t('tweet.tweet')  %></th>
       <td><%= t.text_field :tweet %></td>
     </tr>
+    <tr>
+      <th><%= t.label :picture, t('tweet.picture') %></th>
+      <td>
+        <%= t.file_field :picture, id: :tweet_picture %>
+        <% if @tweet.picture.present? %>
+          <label>
+            <%= t.check_box :remove_picture %>
+            
+        <%= t('tweet.delete_picture') %>
+          </label>
+        <% end %>
+    </td>
+    </tr>
+    <% if @tweet.picture.present? %>
+      <tr>
+        <th>
+        <%= t('tweet.appended_picture') %>
+        </th>
+        <td>
+        <%= image_tag @tweet.picture_url %><br>
+        </td>
+      </tr>
+    <% end %>
   </table>
 
-  <%= t.submit '更新' %><br><br>
+  <%= t.submit t('view.update') %><br><br>
   <%= link_to t('view.back') , user_tweets_path(@user) %>
 
 <% end %>

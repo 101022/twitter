@@ -1,0 +1,20 @@
+<h1>返信</h1>
+
+
+<div
+    <span>以下のツイートに返信します</span><br>
+    <%= @user.name %>:<%= @tweet.tweet %>
+</div>
+<br>
+<%= form_with(model: @comment, url: tweet_comments_path) do |c| %>
+  <table border="1">
+    <tr>
+      <th><%= c.label :comment, t('comment.comment') %></th>
+      <td><%= c.text_field :comment %></td>
+    </tr>
+  </table>
+
+  <%= c.submit t('comment.reply') %><br><br>
+  <%= link_to t('view.back'), user_tweets_path(current_user) %>
+
+<% end %>
