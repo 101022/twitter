@@ -61,8 +61,8 @@
           <td>
             <% if current_user?(comment.user) %>
               <div class="padding-left-37">
-                <%= link_to t('view.edit'), edit_comment_path(comment) %>
-                <%= link_to t('view.delete'), comment_path(comment),
+                <%= link_to t('view.edit'), edit_comment_path(comment, tweet_id: tweet.id) %>
+                <%= link_to t('view.delete'), comment_path(comment, tweet_id: tweet.id),
                                     method: :delete,
                                   data: { confirm: "本当に削除しますか？" } %>
               </div>

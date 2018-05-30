@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def new
     @tweet = tweet
     @user = @tweet.user
-    @comment = Comment.new
+    @comment = tweet.comments.new
   end
 
   def create
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find_by(id: params[:id])
+    @comment = tweet.comments.find(params[:id])
     @tweet = @comment.tweet
     @user = @tweet.user
   end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find_by(id: params[:id])
+    comment = tweet.comments.find(params[:id])
     if comment.destroy
       redirect_to user_tweets_path(current_user), flash: {success: '削除しました'}
     else
@@ -51,6 +51,6 @@ class CommentsController < ApplicationController
     end
 
     def comment
-      @comment ||= Comment.find(params[:id])
+      @comment ||= tweet.comments.find(params[:id])
     end
 end
