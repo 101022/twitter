@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     end
 
     def tweet
-      @tweet ||= Tweet.find(params[:tweet_id])
+      @tweet ||= user.tweets.find(params[:tweet_id])
     end
 
     def comment

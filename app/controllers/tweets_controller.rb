@@ -39,10 +39,11 @@ class TweetsController < ApplicationController
 
     def destroy
         tweet = Tweet.find_by(id: params[:id])
+        u = tweet.user
         if tweet.destroy
-            redirect_to user_tweets_path(tweet.user), flash: {success: 'ツイートを削除しました'}
+            redirect_to user_tweets_path(u), flash: {success: 'ツイートを削除しました'}
         else
-            redirect_to user_tweets_path(tweet.user), flash: {error: 'ツイートを削除できませんでした'}
+            redirect_to user_tweets_path(u), flash: {error: 'ツイートを削除できませんでした'}
         end
     end
 

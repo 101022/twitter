@@ -6,6 +6,7 @@
 </div>
 <br>
 <%= form_with(model: @comment, url: tweet_comments_path, local: true) do |c| %>
+  <%= hidden_field_tag :user_id, current_user.id %>
   <div class="form-group">
     <%= c.label :comment, t('comment.comment') %>
     <%= c.text_field :comment, class: "form-controll" %>
