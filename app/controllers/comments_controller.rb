@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if comment.save
       redirect_to user_tweets_path(current_user), flash: {success: '返信しました'}
     else
-      render 'new', flash: {error: '返信できませんでした'}
+      render :new, flash: {error: '返信できませんでした'}
     end
   end
 
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def update
     if comment.update(comment_params)
-        redirect_to user_tweets_path(current_user), flash: {success: 'コメントを更新しました'}
+      redirect_to user_tweets_path(current_user), flash: {success: 'コメントを更新しました'}
     else
       redirect_to user_tweets_path(current_user), flash: {error: 'コメントの更新に失敗しました'}
     end
@@ -43,14 +43,14 @@ class CommentsController < ApplicationController
     end
 
     def user
-        @user ||= User.find(params[:user_id])
+      @user ||= User.find(params[:user_id])
     end
 
     def tweet
-        @tweet ||= Tweet.find(params[:tweet_id])
+      @tweet ||= Tweet.find(params[:tweet_id])
     end
 
     def comment
-        @comment ||= Comment.find(params[:id])
+      @comment ||= Comment.find(params[:id])
     end
 end

@@ -19,6 +19,6 @@ class RelationshipsController < ApplicationController
 
   private
     def create_params
-        params.permit(:following_id).merge(follower_id: current_user.id)
+      params.permit(:following_id).merge(follower_id: current_user.id)
     end
 end

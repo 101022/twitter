@@ -1,5 +1,5 @@
 class Tweet < ApplicationRecord
-  validates :tweet, presence: true
+  validates :body, presence: true
   
   mount_uploader :picture, PictureUploader
 

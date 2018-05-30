@@ -26,7 +26,7 @@ ja:
     user_show:        ユーザ情報
   tweet:
     tweet_list:       ツイート一覧
-    tweet:            ツイート
+    body:             ツイート
     photo:            写真
     new_tweet:        新規ツイート
     updatetime:       更新日時

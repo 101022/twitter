@@ -1,6 +1,6 @@
 <h1><%= t('user.user_edit') %></h1>
 
-<%= form_with(model: @user) do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
 
   <table class="table table-bordered">
     <tr>

@@ -1,6 +1,6 @@
 <h1><%= t('user.user_new') %></h1>
 
-<%= form_with(model: @user) do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
 
   <table class="table table-bordered">
     <tr>
@@ -21,7 +21,7 @@
     </tr>
   </table>
 
-  <%= f.submit 'アカウントを作成する' %><br><br>
+  <%= f.submit 'アカウントを作成する', class: "btn btn-primary"  %><br><br>
   <%= link_to t('view.back') , users_path %>
 
 <% end %>

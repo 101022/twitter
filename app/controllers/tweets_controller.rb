@@ -3,11 +3,9 @@ class TweetsController < ApplicationController
     def index
         @user = user
         if current_user?(@user)
-            followings = @user.followings.pluck(:id)
-            followings.push(@user.id)
-            @tweet = Tweet.where(user_id: followings).order("updated_at DESC")
+            @tweets = Tweet.where(user_id: @user.followings.ids).or(Tweet.where(user_id: @user.id)).order("updated_at DESC")
         else
-            @tweet = @user.tweets.all.order("updated_at DESC")
+            @tweets = @user.tweets.all.order("updated_at DESC")
         end
     end
 
@@ -21,7 +19,7 @@ class TweetsController < ApplicationController
         if tweet.save
           redirect_to user_tweets_path, flash: {success: 'ツイートしました'}
         else
-          render 'new', flash: {error: 'ツイートできませんでした'}
+          render :new, flash: {error: 'ツイートできませんでした'}
         end
     end
     
@@ -35,7 +33,7 @@ class TweetsController < ApplicationController
         if @tweet.update(tweet_params)
             redirect_to user_tweets_path(@tweet.user), flash: {success: 'ツイートを更新しました'}
         else
-            render 'edit', flash: {error: 'ツイートの更新に失敗しました'}
+            redirect_to edit_tweet_path(@tweet, current_user), flash: {error: 'ツイートの更新に失敗しました'}
         end
     end
 
@@ -44,13 +42,13 @@ class TweetsController < ApplicationController
         if tweet.destroy
             redirect_to user_tweets_path(tweet.user), flash: {success: 'ツイートを削除しました'}
         else
-            render 'index', flash: {error: 'ツイートを削除できませんでした'}
+            redirect_to user_tweets_path(tweet.user), flash: {error: 'ツイートを削除できませんでした'}
         end
     end
 
     private
         def tweet_params
-            params.require(:tweet).permit(:user, :tweet, :picture, :remove_picture)
+            params.require(:tweet).permit(:user, :body, :picture, :remove_picture)
         end
 
         def user
@@ -60,5 +58,4 @@ class TweetsController < ApplicationController
         def tweet
             @tweet ||= Tweet.find(params[:id])
         end
-
 end

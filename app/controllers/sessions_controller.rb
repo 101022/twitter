@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to user_path(user), flash: {success: 'ログインしました'}
     else
-      render 'new', flash: {error: 'ログインできませんでした'}
+      render :new, flash: {error: 'ログインできませんでした'}
     end
   end
 

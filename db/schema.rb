@@ -16,27 +16,26 @@ ActiveRecord::Schema.define(version: 2018_05_25_064753) do
     t.integer "user_id"
     t.integer "tweet_id"
     t.string "comment"
-    t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["tweet_id"], name: "index_comments_on_tweet_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
     t.integer "following_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "tweets", force: :cascade do |t|
     t.integer "user_id"
-    t.string "tweet"
-    t.datetime "updated_at", null: false
+    t.string "body"
     t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "picture"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end

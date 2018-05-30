@@ -1,6 +1,6 @@
 <h1><%= t('session.session_new') %></h1>
 
-<%= form_with(model: @session, url: sessions_path, scope: :session) do |f| %>
+<%= form_with(model: @session, url: sessions_path, scope: :session, local: true) do |f| %>
 
   <table class="table table-bordered">
     <tr>
